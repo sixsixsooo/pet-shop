@@ -1,27 +1,40 @@
 "use strict";
 
-const foodPrices = new Map();
+const products = new Map([
+  ["Pig", 2020],
+  ["Cat", 2025],
+  ["Dog", 200000],
+]);
 
-foodPrices.set("Cat", 100);
-console.log(foodPrices.set("Dog", 200));
+console.log(products);
 
-foodPrices.set("Bird", 50).set("Crokodile", 400);
+const cards = {
+  profile: 1,
+  header: 2,
+  footer: 3,
+  main: 4,
+};
 
-console.log(foodPrices);
-console.log(foodPrices.has("Cat"));
+console.log(Object.entries(cards));
+const cardsInfo = new Map(Object.entries(cards));
+console.log(cardsInfo);
 
-console.log(foodPrices.get("Crokodile"));
+console.log(cardsInfo.size);
 
-console.log(foodPrices.delete("Bird"));
-console.log(foodPrices);
+const categories = new Map([
+  ["Products", true],
+  ["Ballance", 1000],
+  ["Loves", "Cat"],
+]);
+console.log(categories);
 
-console.log(foodPrices.clear());
-console.log(foodPrices);
+const users = {
+  1: "Antony",
+  2: "Anjelly",
+};
 
-const first = { a: 1 };
+const usersWork = new Map(Object.entries(users));
 
-foodPrices.set("Pig", 10000).set("Povodoc", 1000000).set(first, { b: 2 });
-console.log(foodPrices.get(first));
-console.log(foodPrices);
+console.log(usersWork);
 
-console.log(foodPrices.size);
+console.log(usersWork.size);
