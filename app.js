@@ -1,6 +1,6 @@
 "use strict";
 
-const users = new Map([
+let users = new Map([
   [1, "Eugeniy"],
   [2, "Til"],
   [3, "Rick"],
@@ -23,3 +23,6 @@ console.log([...users]);
 console.log([...users.keys()]);
 
 console.log([...users.values()]);
+
+users = new Map([...users].map((el) => el.reverse()));
+console.log(users);
