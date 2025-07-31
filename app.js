@@ -1,28 +1,26 @@
 "use strict";
+let a = { a: 1 };
+let b = { b: 2 };
 
-let users = new Map([
-  [1, "Eugeniy"],
-  [2, "Til"],
-  [3, "Rick"],
+let users = new WeakMap([
+  [a, 1],
+  [b, 2],
 ]);
-
-for (const entry of users) {
-  console.log(entry);
-}
-
-for (const [key, value] of users) {
-  console.log(key);
-  console.log(value);
-}
-for (const [key, value] of users) {
-  console.log(key, value);
-}
-
-console.log([...users]);
-
-console.log([...users.keys()]);
-
-console.log([...users.values()]);
-
-users = new Map([...users].map((el) => el.reverse()));
+a = null;
 console.log(users);
+
+let cacsh = new WeakMap();
+
+function getValue(obj) {
+  if (!cacsh.has(obj)) {
+    const result = 1;
+    cacsh.set(obj, result);
+  }
+  return cacsh.get(obj);
+}
+
+const res = getValue(b);
+console.log(res);
+
+const res2 = getValue(b);
+console.log(res2);
