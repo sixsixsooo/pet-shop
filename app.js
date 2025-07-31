@@ -1,64 +1,27 @@
 "use strict";
 
-const petFood = [
-  "Sweet",
-  "Derty",
-  "Sweet",
-  "Sweet",
-  false,
-  true,
-  1,
-  1,
-  2,
-  3,
-  4,
-  5,
-];
+const foodPrices = new Map();
 
-const setPetFood = new Set(petFood);
+foodPrices.set("Cat", 100);
+console.log(foodPrices.set("Dog", 200));
 
-console.log(setPetFood);
+foodPrices.set("Bird", 50).set("Crokodile", 400);
 
-console.log(setPetFood.size);
-console.log(setPetFood.has(1));
+console.log(foodPrices);
+console.log(foodPrices.has("Cat"));
 
-setPetFood.add("Jiraff");
-setPetFood.delete("Sweet");
-console.log(setPetFood);
+console.log(foodPrices.get("Crokodile"));
 
-for (const food of setPetFood) {
-  console.log(food);
-}
+console.log(foodPrices.delete("Bird"));
+console.log(foodPrices);
 
-console.log([...setPetFood]);
+console.log(foodPrices.clear());
+console.log(foodPrices);
 
-console.log(new Set("cating"));
+const first = { a: 1 };
 
-const slovo = "fishka";
-let asbuka = new Set(slovo);
-console.log(asbuka);
+foodPrices.set("Pig", 10000).set("Povodoc", 1000000).set(first, { b: 2 });
+console.log(foodPrices.get(first));
+console.log(foodPrices);
 
-console.log(new Set([{ a: 1 }, { b: 2 }, { c: 3 }]));
-
-const prices = [1, 2, 1, 3, 4, 5, 1, 3, 4, 1000, 10];
-
-const sortedPrices = new Set(prices);
-console.log(sortedPrices);
-
-sortedPrices.add(20);
-console.log(sortedPrices);
-
-sortedPrices.delete(10);
-console.log(sortedPrices);
-
-console.log(sortedPrices.has(100));
-console.log(sortedPrices.size);
-
-console.log(...sortedPrices);
-for (const every of sortedPrices) {
-  if (every !== 1) {
-    sortedPrices.add(10000);
-    sortedPrices.has(1);
-    console.log(every);
-  }
-}
+console.log(foodPrices.size);
