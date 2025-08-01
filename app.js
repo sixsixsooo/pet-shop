@@ -1,26 +1,16 @@
 "use strict";
-let a = { a: 1 };
-let b = { b: 2 };
 
-let users = new WeakMap([
-  [a, 1],
-  [b, 2],
-]);
-a = null;
-console.log(users);
+console.log(Number("40"));
 
-let cacsh = new WeakMap();
+console.log(Number.parseInt("20 and cats"));
 
-function getValue(obj) {
-  if (!cacsh.has(obj)) {
-    const result = 1;
-    cacsh.set(obj, result);
-  }
-  return cacsh.get(obj);
-}
+console.log(Number.parseInt("1000 and 100"));
 
-const res = getValue(b);
-console.log(res);
+console.log(Number.parseInt("10"));
 
-const res2 = getValue(b);
-console.log(res2);
+console.log(Number.isFinite(10 / 0));
+console.log(Number.isFinite(Number("87NeValidno")));
+console.log(Number.isFinite(10));
+
+console.log(Number.isNaN(Number("10dedw")));
+console.log(Number.isNaN(10));
