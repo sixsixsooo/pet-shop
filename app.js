@@ -1,31 +1,31 @@
 "use strict";
 
-console.log(Number.MAX_SAFE_INTEGER);
-console.log(Number.MIN_SAFE_INTEGER);
+const optionsRus = {
+  style: "currency",
+  currency: "RUB",
+};
 
-const max = Number.MAX_SAFE_INTEGER;
+const optionsUs = {
+  style: "currency",
+  currency: "USD",
+};
 
-console.log(max + 1);
-console.log(max + 2);
-console.log(max + 3);
+const optionsProcent = {
+  style: "percent",
+};
 
-console.log(99904091291049012940104910409124912409120n);
-console.log(BigInt(99904091291049012940104910409124912409120));
-console.log(BigInt("99904091291049012940104910409124912409120"));
+const optionsSimple = {
+  style: "decimal",
+};
 
-console.log(
-  100000000090909090090909090909090909090909090n +
-    100000000090909090090909090909090909090909090n
-);
+const optionsUkr = {
+  style: "currency",
+  currency: "UAH",
+};
 
-console.log(
-  100000000090909090090909090909090909090909090n *
-    100000000090909090090909090909090909090909090n
-);
-
-console.log(BigInt(109090990909090909090990909090909090909090909) * 1000n);
-
-console.log(1000000909090999n > 10);
-console.log(1000000909090999n > 10n);
-console.log(1000000909090999n == 1000000909090999);
-console.log(1000000909090999n === 1000000909090999);
+console.log(new Intl.NumberFormat("ru-RU", optionsRus).format(40000));
+console.log(new Intl.NumberFormat("en-US", optionsUs).format(40000));
+console.log(new Intl.NumberFormat("ru-RU", optionsUs).format(40000));
+console.log(new Intl.NumberFormat("ru-RU", optionsProcent).format(0.4));
+console.log(new Intl.NumberFormat("ru-RU", optionsSimple).format(10000));
+console.log(new Intl.NumberFormat("en-UK", optionsUkr).format(1000));
