@@ -1,31 +1,29 @@
 "use strict";
 
-const optionsRus = {
-  style: "currency",
-  currency: "RUB",
-};
+function convert(number, inputNumber, convertNumber) {
+  const allCurencyes = [
+    { name: "RUB", mult: 1 / 60 },
+    { name: "USD", mult: 1 },
+    { name: "EUR", mult: 1.2 },
+  ];
 
-const optionsUs = {
-  style: "currency",
-  currency: "USD",
-};
+  const input = allCurencyes.find((a) => a.name === inputNumber);
+  if (!input) {
+    return null;
+  }
 
-const optionsProcent = {
-  style: "percent",
-};
+  const convert = allCurencyes.find((a) => a.name === convertNumber);
+  if (!convert) {
+    return null;
+  }
 
-const optionsSimple = {
-  style: "decimal",
-};
+  return new Intl.NumberFormat("ru-RU", {
+    style: "currency",
+    currency: convert.name,
+  }).format((number * input.mult) / convert.mult);
+}
 
-const optionsUkr = {
-  style: "currency",
-  currency: "UAH",
-};
-
-console.log(new Intl.NumberFormat("ru-RU", optionsRus).format(40000));
-console.log(new Intl.NumberFormat("en-US", optionsUs).format(40000));
-console.log(new Intl.NumberFormat("ru-RU", optionsUs).format(40000));
-console.log(new Intl.NumberFormat("ru-RU", optionsProcent).format(0.4));
-console.log(new Intl.NumberFormat("ru-RU", optionsSimple).format(10000));
-console.log(new Intl.NumberFormat("en-UK", optionsUkr).format(1000));
+console.log(convert(1000, "RUB", "USD"));
+console.log(convert(1000, "USD", "EUR"));
+console.log(convert(1000, "RUB", "USD"));
+console.log(convert(1000, "EUR", "RUB"));
