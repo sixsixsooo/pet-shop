@@ -1,7 +1,10 @@
 "use strict";
 
-const date = new Date();
-console.log(date);
-console.log(new Date("06-08-2025"));
+const date1 = new Date(6, 7, 2025);
+const date2 = new Date(6, 8, 2025);
 
-console.log(Date.now());
+function timeBetweenDate(dateFirst, dateSecond) {
+  return (dateSecond - dateFirst) / (1000 * 60 * 60 * 24);
+}
+
+console.log(timeBetweenDate(date1, date2));
