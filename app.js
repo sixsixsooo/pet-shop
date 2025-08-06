@@ -1,39 +1,14 @@
 "use strict";
 
-const date1 = new Date(6, 7, 2025);
-const date2 = new Date(6, 7, 2025);
-const date3 = new Date(6, 8, 2025);
-const date4 = new Date(6, 8, 2025);
+const date = new Date();
 
-function timeBetweenDate(dateFirst, dateSecond) {
-  return (dateSecond - dateFirst) / (1000 * 60 * 60 * 24);
-}
-
-console.log(timeBetweenDate(date1, date2));
-
-console.log(date1 > date2);
-console.log(Number(date1) === Number(date2));
-console.log(Number(date1) === Number(date2));
-console.log(date3.getTime() == date4.getTime());
-console.log(date3 == date4);
-
-const user1 = {
-  name: "Eugeniy",
-  birthday: "2007/08/06",
+const options = {
+  hour: "numeric",
+  minutes: "numeric",
+  month: "long",
 };
 
-function isBirthday(user) {
-  const userBirthday = new Date(user.birthday);
-  const nowDate = new Date();
+console.log(new Intl.DateTimeFormat("ru-RU", options).format(date));
 
-  if (userBirthday.getMonth() !== nowDate.getMonth()) {
-    return false;
-  }
-  if (userBirthday.getDate() !== nowDate.getDate()) {
-    return false;
-  }
-
-  return true;
-}
-
-console.log(isBirthday(user1));
+console.log(navigator.language);
+console.log(new Intl.DateTimeFormat(navigator, options).format(date));
