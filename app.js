@@ -1,14 +1,20 @@
 "use strict";
 
-const date = new Date();
+function pizzaTimer(ms) {
+  const end = new Date().getTime() + ms;
+  const interval = setInterval(() => {
+    console.log(
+      new Intl.DateTimeFormat("ru-RU", {
+        minute: "numeric",
+        second: "numeric",
+      }).format(end + 100 - new Date())
+    );
+  }, 1000);
 
-const options = {
-  hour: "numeric",
-  minutes: "numeric",
-  month: "long",
-};
+  setTimeout(() => {
+    clearInterval(interval);
+    console.log("Take your pizza🍕🍕🍕");
+  }, ms);
+}
 
-console.log(new Intl.DateTimeFormat("ru-RU", options).format(date));
-
-console.log(navigator.language);
-console.log(new Intl.DateTimeFormat(navigator, options).format(date));
+pizzaTimer(10000);
