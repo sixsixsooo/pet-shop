@@ -1,14 +1,46 @@
 "use strict";
 
-const CatWetFeed = function (weight, taste) {
-  this.weight = weight;
-  this.taste = taste;
-  this.isSoled = false;
+const product = {
+  id: 1,
+  name: "viscas",
+  count: 44,
 };
 
-CatWetFeed.prototype.sold = function () {
-  this.isSoled = true;
+const Card = function () {
+  this.products = [];
 };
-const citicat = new CatWetFeed(100, "salmon");
-citicat.sold();
-console.log(citicat);
+
+Card.prototype.addProduct = function (product) {
+  if (this.products.find((product) => product.id === product.id)) {
+    return;
+  }
+  this.products.push(product);
+};
+
+Card.prototype.increaseAmount = function (id) {
+  this.products = this.products.map((product) => {
+    if (product.id == id) {
+      product.count++;
+      return product;
+    }
+    return product;
+  });
+};
+
+Card.prototype.decreaseAmount = function (id) {
+  this.products = this.products
+    .map((product) => {
+      if (product.id == id) {
+        product.count--;
+        return product;
+      }
+      return product;
+    })
+    .filter((product) => product.count > 0);
+};
+
+const card = new Card();
+card.addProduct(product);
+console.log(card);
+console.log(card.increaseAmount(1));
+console.log(card.decreaseAmount(1));
