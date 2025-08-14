@@ -1,21 +1,15 @@
 "use strict";
 
-function orderReadyTimer(ms) {
-  const endTime = new Date().getTime() + ms;
+const User = function (name, password, email) {
+  this.name = name;
+  this.password = password + "efefeve";
+  this.email = email;
+};
 
-  const timerInterval = setInterval(() => {
-    console.log(
-      new Intl.DateTimeFormat("ru-RU", {
-        minute: "numeric",
-        second: "numeric",
-      }).format(endTime + 100 - new Date())
-    );
-  }, 1000);
+const user1 = new User("Evgeniy", "124325fjejfe", "jffjfj@gmail.com");
+console.log(user1);
 
-  setTimeout(() => {
-    clearInterval(timerInterval);
-    console.log("Order is ready!");
-  }, ms);
-}
+const user2 = new User("Evgeniy", "femimei34", "ooop@gmail.com");
+console.log(user2);
 
-console.log(orderReadyTimer(10000));
+console.log(user2 instanceof User);
