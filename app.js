@@ -1,20 +1,21 @@
 "use strict";
 
-function pizzaTimer(ms) {
-  const end = new Date().getTime() + ms;
-  const interval = setInterval(() => {
+function orderReadyTimer(ms) {
+  const endTime = new Date().getTime() + ms;
+
+  const timerInterval = setInterval(() => {
     console.log(
       new Intl.DateTimeFormat("ru-RU", {
         minute: "numeric",
         second: "numeric",
-      }).format(end + 100 - new Date())
+      }).format(endTime + 100 - new Date())
     );
   }, 1000);
 
   setTimeout(() => {
-    clearInterval(interval);
-    console.log("Take your pizza🍕🍕🍕");
+    clearInterval(timerInterval);
+    console.log("Order is ready!");
   }, ms);
 }
 
-pizzaTimer(10000);
+console.log(orderReadyTimer(10000));
