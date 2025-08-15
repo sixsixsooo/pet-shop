@@ -1,18 +1,17 @@
 "use strict";
 
-class Test {
-  static a = 100;
+class Car {
+  #vin;
 
-  static hello() {
-    console.log("hello");
+  #changeSpeed() {
+    console.log("Speed chenged");
   }
 
-  static {
-    let b = 10000;
-    this.a = 10;
+  speedNowa() {
+    this.#changeSpeed();
   }
 }
 
-Test.hello();
+const car = new Car();
 
-console.log(Test.a);
+car.speedNowa();
