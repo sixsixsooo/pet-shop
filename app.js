@@ -1,46 +1,41 @@
 "use strict";
 
-const product = {
-  id: 1,
-  name: "viscas",
-  count: 44,
-};
+const task = {
+  title: "task1",
+  date: new Date("2025/1/1"),
 
-const Card = function () {
-  this.products = [];
-};
+  get isOverdue() {
+    return this.date;
+  },
 
-Card.prototype.addProduct = function (product) {
-  if (this.products.find((product) => product.id === product.id)) {
-    return;
-  }
-  this.products.push(product);
-};
-
-Card.prototype.increaseAmount = function (id) {
-  this.products = this.products.map((product) => {
-    if (product.id == id) {
-      product.count++;
-      return product;
+  set isOverdue(date) {
+    if (task.date != date) {
+      this.date = new Date();
     }
-    return product;
-  });
+  },
 };
 
-Card.prototype.decreaseAmount = function (id) {
-  this.products = this.products
-    .map((product) => {
-      if (product.id == id) {
-        product.count--;
-        return product;
-      }
-      return product;
-    })
-    .filter((product) => product.count > 0);
-};
+task.isOverdue = "2025/7/1";
+console.log(task);
 
-const card = new Card();
-card.addProduct(product);
-console.log(card);
-console.log(card.increaseAmount(1));
-console.log(card.decreaseAmount(1));
+class Task {
+  constructor(title, dateTask) {
+    this.title = title;
+    this.date = dateTask;
+  }
+
+  get isOverdue() {
+    return this.dateTask < new Date();
+  }
+
+  set dueDate(date) {
+    if (date < new Date()) {
+      return;
+    }
+    this._date = date;
+  }
+}
+
+const task1 = new Task("Js", new Date());
+
+console.log((task1.dueDate = new Date("2025/8/15")));
