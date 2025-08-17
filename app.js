@@ -1,81 +1,53 @@
-// "use strict";
-
-// class User {
-//   #login;
-//   #password;
-//   constructor(login, password) {
-//     this.#login = login;
-//     this.setPassword(password);
-//   }
-
-//   #encryptPassword(password) {
-//     return password.slice("").reverse().join("");
-//   }
-
-//   setPassword(password) {
-//     this.#password = this.#encryptPassword(password);
-//   }
-
-//   checkPassword(password) {
-//     this.#password === this.#encryptPassword(password);
-//   }
-
-//   changePassword(oldPassword, newPassword) {
-//     if (this.checkPassword(oldPassword)) {
-//       this.setPassword(newPassword);
-//       console.log("Your password was changed!!");
-//     } else {
-//       ("It's was not old password!");
-//     }
-//   }
-//   changeLogin(newLogin) {
-//     this.#login = newLogin;
-//   }
-// }
-
-// const user1 = new User("Lampach", "qwerty");
-
-// user1.login = "lampach";
-// console.log(user1.login);
-
-// console.log(user1.checkPassword());
-
 "use strict";
 
-const User = {
-  loging() {
-    console.log("log");
-  },
-};
+class User {
+  #login;
+  #password;
+  constructor(login, password) {
+    this.#login = login;
+    this.setPassword(password);
+  }
 
-const user = Object.create(User);
-user.loging();
-console.log(user);
+  #encryptPassword(password) {
+    return password.split("").reverse().join("");
+  }
 
-console.log(user.__proto__ == User);
+  setPassword(password) {
+    this.#password = this.#encryptPassword(password);
+  }
 
-const Book = function (title, author) {
-  this.title = title;
-  this.author = author;
-};
+  checkPassword(password) {
+    return this.#password === this.#encryptPassword(password);
+  }
 
-Book.prototype.buy = function () {
-  console.log("buy fanction");
-};
+  changePassword(oldPassword, newPassword) {
+    if (this.checkPassword(oldPassword)) {
+      this.setPassword(newPassword);
+      console.log("Your password was changed!!");
+    } else {
+      console.log("It's was not old password!");
+    }
+  }
+  changeLogin(newLogin) {
+    this.#login = newLogin;
+  }
 
-const AudioBook = function (title, author, lenght) {
-  Book.call(this, title, author);
-  this.lenght = length;
-};
+  get login() {
+    return this.#login;
+  }
 
-AudioBook.prototype = Object.create(Book.prototype);
+  set login(login) {
+    this.#login = login;
+  }
+}
 
-AudioBook.prototype.loging = function () {
-  console.log(`${this.title} - ${this.author}`);
-};
+const user1 = new User("Lampach", "qwerty");
 
-const book = new AudioBook("Tororo", "Club hunting", 3);
+console.log(user1.checkPassword("qwerty"));
+user1.changeLogin("Artemka");
 
-book.loging();
-book.buy();
-console.log(book);
+console.log(user1.login);
+
+user1.login = "Artemka zamenen";
+
+console.log(user1.login);
