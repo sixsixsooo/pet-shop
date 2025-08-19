@@ -1,53 +1,25 @@
-"use strict";
-
-class User {
-  #login;
-  #password;
-  constructor(login, password) {
-    this.#login = login;
-    this.setPassword(password);
+class Book {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
   }
-
-  #encryptPassword(password) {
-    return password.split("").reverse().join("");
-  }
-
-  setPassword(password) {
-    this.#password = this.#encryptPassword(password);
-  }
-
-  checkPassword(password) {
-    return this.#password === this.#encryptPassword(password);
-  }
-
-  changePassword(oldPassword, newPassword) {
-    if (this.checkPassword(oldPassword)) {
-      this.setPassword(newPassword);
-      console.log("Your password was changed!!");
-    } else {
-      console.log("It's was not old password!");
-    }
-  }
-  changeLogin(newLogin) {
-    this.#login = newLogin;
-  }
-
-  get login() {
-    return this.#login;
-  }
-
-  set login(login) {
-    this.#login = login;
+  buy() {
+    console.log("Buy book");
   }
 }
 
-const user1 = new User("Lampach", "qwerty");
+class AudioBook extends Book {
+  constructor(title, author, lenMin) {
+    super(title, author);
+    this.title = title;
+  }
 
-console.log(user1.checkPassword("qwerty"));
-user1.changeLogin("Artemka");
+  log() {
+    console.log(`title: ${this.title} - author: ${this.author}`);
+  }
+}
 
-console.log(user1.login);
+const bookNew = new AudioBook("Tororo", "Toriki", 3);
 
-user1.login = "Artemka zamenen";
-
-console.log(user1.login);
+bookNew.buy();
+bookNew.log();
