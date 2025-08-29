@@ -1,36 +1,24 @@
-"use stict";
+"use strict";
 
-class Treasure {
-  price = 0;
-}
+class User {
+  role = "User";
 
-class Crystal extends Treasure {
-  price = 100;
-}
-
-class Coin extends Treasure {
-  price = 10;
-}
-
-class Inventory {
-  #money = 0;
-  pickIt(treasure) {
-    if (treasure instanceof Crystal) {
-      this.#money += treasure.price;
-    }
-    if (treasure instanceof Coin) {
-      this.#money += treasure.price;
-    }
-  }
-
-  get eMoney() {
-    return this.#money;
+  getUser() {
+    return this.role;
   }
 }
 
-const inventory = new Inventory();
-const crystal = new Crystal();
-const coin = new Coin();
+class Admin {
+  role = ["User", "Admin"];
 
-inventory.pickIt(coin);
-console.log(inventory.eMoney);
+  getUser() {
+    return this.role.join(", ");
+  }
+}
+
+function logRole(role) {
+  console.log("Role: " + role.getUser().toUpperCase());
+}
+
+logRole(new User());
+logRole(new Admin());
