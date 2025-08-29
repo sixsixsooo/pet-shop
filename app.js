@@ -1,21 +1,36 @@
-"use strict";
+"use stict";
 
-class Charecter {
-  #hp = 10;
-  recieveDamage(damage) {
-    this.#hp -= damage;
-  }
+class Treasure {
+  price = 0;
+}
+
+class Crystal extends Treasure {
+  price = 100;
+}
+
+class Coin extends Treasure {
+  price = 10;
 }
 
 class Inventory {
-  inventory = [];
-  putInInventory(item) {
-    this.inventory.push(item);
+  #money = 0;
+  pickIt(treasure) {
+    if (treasure instanceof Crystal) {
+      this.#money += treasure.price;
+    }
+    if (treasure instanceof Coin) {
+      this.#money += treasure.price;
+    }
+  }
+
+  get eMoney() {
+    return this.#money;
   }
 }
 
-class SaveData {
-  save(data) {
-    localStorage.setItem("char", data);
-  }
-}
+const inventory = new Inventory();
+const crystal = new Crystal();
+const coin = new Coin();
+
+inventory.pickIt(coin);
+console.log(inventory.eMoney);
